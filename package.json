@@ -1,26 +1,44 @@
 {
-  "name": "fe",
+  "name": "data-optimizer",
   "version": "0.1.0",
   "private": true,
+  "description": "Optimizer",
+  "author": {
+    "name": "Luis Pais"
+  },
+  "build": {
+    "appId": "io.luispais.data-optimizer",
+    "win": {
+      "target": [
+        "portable"
+      ]
+    }
+  },
+  "main": "public/electron.js",
+  "homepage": "./",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.12.0",
-    "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.22",
-    "@types/node": "^12.20.10",
-    "@types/react": "^17.0.3",
-    "@types/react-dom": "^17.0.3",
+    "@material-ui/core": "^4.11.3",
+    "chart.js": "^3.2.0",
+    "cross-env": "^7.0.3",
+    "faker": "^5.5.3",
     "react": "^17.0.2",
+    "react-chartjs-2": "^3.0.3",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
     "react-scripts": "4.0.3",
+    "react-toastify": "^7.0.4",
+    "simpler-state": "^1.0.0",
     "typescript": "^4.2.4",
     "web-vitals": "^1.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "build": "npm run react-build && npm run electron-build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron-build": "electron-builder -lw",
+    "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +57,22 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/faker": "^5.5.3",
+    "@types/jest": "^26.0.22",
+    "@types/node": "^12.20.10",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "concurrently": "^6.0.2",
+    "electron": "^12.0.6",
+    "electron-builder": "^22.10.5",
+    "node-sass": "^5.0.0",
+    "type-fest": "^1.0.2",
+    "wait-on": "^5.3.0",
+    "worker-loader": "^3.0.8"
   }
 }

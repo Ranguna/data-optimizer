@@ -1,0 +1,71 @@
+$new-optimizer-color-ease: cubic-bezier(.23,1,.32,1);
+
+.optimizer-row {
+	display: flex;
+	flex-direction: column;
+	
+	margin: 15px;
+	min-height: 180px;
+	background-color: unset;
+
+	padding: 20px;
+
+	* {
+		flex: 0 1 auto;
+	}
+	
+	&.empty {
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		border-style: dashed;
+		border-width: 5px;
+		font-size: 70px;
+		color: darkgray;
+		border-color: darkgray;
+		border-radius: 30px;
+		transition: color 0.3s $new-optimizer-color-ease, border-color 0.3s $new-optimizer-color-ease;
+
+		&:hover {
+			color: gray;
+			border-color: gray;
+		}
+	}
+}
+
+.optimizer-settings-container {
+	display: flex;
+	flex-direction: row;
+
+	* {
+		flex: 0 1 auto;
+	}
+
+	>:first-child {
+		margin-left: 20px;
+	}
+	>:last-child {
+		margin-right: 20px;
+	}
+}
+
+.optimizer-setting {
+	margin-bottom: 15px;
+}
+
+.optimizer-setting-label {
+	display: flex;
+	flex-direction: column;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+.optimizer-actions {
+	display: flex;
+	flex-direction: row;
+	align-self: center;
+
+	>* {
+		margin: 5px !important;
+	}
+}
