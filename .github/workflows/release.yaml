@@ -4,12 +4,14 @@ on:
     branches:
       - master
 jobs:
-  tag-release:
+  release:
     runs-on: ubuntu-latest
     concurrency: release
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
+      - name: Build
+        run: npm run build
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
