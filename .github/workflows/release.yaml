@@ -5,13 +5,17 @@ on:
       - master
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     concurrency: release
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - name: Install Dependencies
         run: npm ci
+      - run: wget -nc https://dl.winehq.org/wine-builds/winehq.key
+      - run: sudo apt-key add winehq.key
+      - run: sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ groovy main' 
+      - run: sudo apt install --install-recommends winehq-stable
       - name: Build
         run: npm run build
       - name: Release
